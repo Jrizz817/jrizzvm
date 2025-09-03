@@ -1,6 +1,7 @@
 // api/animals.js
-let animalsStore = []; // Armazena todos os pets
-let index = 0; // Controle de batches
+
+let animalsStore = [];
+let currentIndex = 0;
 
 export default async function handler(req, res) {
   if (req.method === "POST") {
@@ -20,10 +21,13 @@ export default async function handler(req, res) {
     if (!animalsStore.length) return res.status(200).json({ batch: [] });
 
     // Pega 10 animais do store
-    const batch = animalsStore.slice(0, 10);
+    const batch = animalsStore.slice(currentIndex, currentIndex + 10);
 
-    // Remove esses 10 do store
-    animalsStore = animalsStore.slice(10);
+    // Atualiza índice
+    currentIndex += 10;
+    if (currentIndex >= animalsStore.length) {
+      currentIndex = 0; // reinicia ciclo infinito
+    }
 
     return res.status(200).json({ batch });
   }
