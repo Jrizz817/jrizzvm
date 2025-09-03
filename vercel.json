@@ -1,8 +1,7 @@
 {
-  "version": 2,
   "functions": {
     "api/animals.js": {
-      "runtime": "node18"
+      "runtime": "vercel-node@18.16.0"
     }
   }
 }
