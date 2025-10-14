@@ -11,6 +11,11 @@
       "src": "/api/animals",
       "methods": ["GET","POST"],
       "dest": "/api/animals.js"
+    },
+    {
+      "src": "/api/notify",
+      "methods": ["GET","POST"],
+      "dest": "/api/notify.js"
     }
   ]
 }
