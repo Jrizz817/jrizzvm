@@ -2,6 +2,18 @@
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "functions": {
     "api/animals.js": {
+      "memory": 512,
+      "maxDuration": 60
+    },
+    "api/key.js": {
+      "memory": 512,
+      "maxDuration": 60
+    },
+    "api/notify.js": {
+      "memory": 512,
+      "maxDuration": 60
+    },
+    "api/keepalive.js": {
       "memory": 128,
       "maxDuration": 10
     }
@@ -13,9 +25,25 @@
       "dest": "/api/animals.js"
     },
     {
+      "src": "/api/key",
+      "methods": ["GET","POST"],
+      "dest": "/api/key.js"
+    },
+    {
       "src": "/api/notify",
       "methods": ["GET","POST"],
       "dest": "/api/notify.js"
+    },
+    {
+      "src": "/api/keepalive",
+      "methods": ["GET","POST"],
+      "dest": "/api/keepalive.js"
+    }
+  ],
+  "crons": [
+    {
+      "path": "/api/keepalive",
+      "schedule": "*/10 * * * *"
     }
   ]
 }
