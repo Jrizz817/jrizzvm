@@ -35,6 +35,11 @@
       "dest": "/api/notify.js"
     },
     {
+      "src": "/api/websocket",
+      "methods": ["GET","POST"],
+      "dest": "/api/websocket.js"
+    },
+    {
       "src": "/api/keepalive",
       "methods": ["GET","POST"],
       "dest": "/api/keepalive.js"
